@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_FolderName" Type="InArgument(x:String)" />
+    <x:Property Name="out_Login" Type="OutArgument(x:String)" />
   </x:Members>
   <this:LoginToFTP.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
@@ -12,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>753,712</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>732,1476</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LoginToFTP_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -54,7 +55,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -86,9 +87,11 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="LoginToFTP" sap:VirtualizedContainerService.HintSize="476,647" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="LoginToFTP" sap:VirtualizedContainerService.HintSize="476,1411" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FtpUrl" />
       <Variable x:TypeArguments="x:String" Name="FtpCredentials" />
@@ -104,7 +107,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="473,143" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -126,7 +129,7 @@
                     <OutArgument x:TypeArguments="x:String">[in_FolderName]</OutArgument>
                   </ui:AssignOperation.To>
                   <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">uhafnuij</InArgument>
+                    <InArgument x:TypeArguments="x:String">SETTLEMENT REPORT</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -209,10 +212,10 @@
         </ui:GetRobotCredential>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -225,16 +228,16 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Private: Use Browser Chrome: Wing FTP Server - Web Client" sap:VirtualizedContainerService.HintSize="434,282" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" ScopeGuid="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Private: Use Browser Chrome: Wing FTP Server - Web Client" sap:VirtualizedContainerService.HintSize="434,1046" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" ScopeGuid="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do: Log in" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do: Log in" sap:VirtualizedContainerService.HintSize="242,830" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -245,15 +248,20 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MaximizeWindow>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Account'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Text="[FtpUserName]" Version="V1">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="HandelPopUp workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Downloads\HandelPopUp.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT username_val'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Text="[FtpUserName]" Version="V1">
               <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/login.html" DesignTimeRectangle="586, 422, 160, 21" ElementType="InputBox" FriendlyName="'Fbn-rparobot'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='text' aaname='Account:' /&gt;" Guid="5a34fa89-c00b-4205-9983-70ba53210939" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKQAAAAZCAYAAAC/4YXqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVHhe7ZdRboMwDIY5I1Kv0gNUXIUepT1IH3oDXrPEjsFOMloGg3T7P8lSM5zEmT+lpRmGwSEQtQSERFQVRsjz+YxA7B7awVHI8ACAI9BSQkhwOBASVAWEBFXxppA31zWNawrR3cPzp+tPjWuvT8r+ZG4Xf67LLY7A3iwSkuUrASEDkHk9EDIBQh7LxkL201f7qfd/ZbhRnfrab13/iA8LhPzW57eyzr3zczrXX9s4P62F95dnIXfUIsw9+b3p+bQv1ST5SiKutVfrqbUI+/NF6niq2iDlz1kk5PgPjzHdiCKENDyOY2O4+YkMStgUzk+kCntKo2k8rUcyjBIkt3WcqwWm/HF/Ppvki6iSb2strZ2cCzKuYtMb0jSDmsVSpY2yQuRkjU0an4lhsILpOph8rq7HCuh59P6mjnvrz4RdC0KuZ1MhjSDUvNdC0me/Nkc5P5eKc6x0skbrWl1LNjc/SyakkSrkRwlfyA0h1/N7QqrmzQlZoizkdzdTuncyfiFRYFZI3JC7sqmQU+PjODZnGyFTyUQMu1c5VwuZ7s9nM1Ip6Wg85iYymzoKdYPFbHxDzr1lrxXSvymTLBymlighhZ9n5heEDFCOmiPw3OVv2YTUMXM2MM+bQh7MN1KBvweEBFUBIUFVfIaQ4N8AIUFVFIUUKRGIvUM7aIREII4OCImoKAb3BRWK9XP0qLQGAAAAAElFTkSuQmCC" InformativeScreenshot="50d80c321cbd3b0f8e36dd3a944a0ce8.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
-                  <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target DesignTimeRectangle="530, 425, 53, 14" ElementType="Text" FriendlyName="'Account'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname='Account:' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Account:' type='' tag='LABEL' class='' check:innerText='Account:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADkAAAASCAYAAADhc3ZwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEpSURBVFhH7ZVNDoMgEEa9oYn3MRzF3kTv4cJbsJ3CyAfDTw1pbWyoi5cGZhjmCdVOa02tc0u2wi3ZCrnkOlHfddQZ+scWx34J9DlMtJXigkxye/QsyFQUuIz3JTeaBiuoSI32t6dpLcUDOO2Z8wXjvK9ZVHlez6R4LuyBGmoxYy9hehF7csyvFbAs5hXNvMdOLInCthHXXLiyEBTiJsfGo+ZQx9aQ9Vw+N8TjSknEvbQ7uXTMVEjiqsZP8qiopVzYkslHuZWSfr9kn5f95AjJcFX3ZpOTi04BawwHm+WSsuYVklhUgK/sKZKy0fz6f10SVzX6bESFzv5PpvUg8YlkkuNwkgUBBoswj7wAHgpEPalYOm9Bowze6JWShvxzdyjZNrdkK/yBpKYn706UCYz1XPUAAAAASUVORK5CYII=" SearchSteps="Selector, Image" />
-                    </scg:List>
-                  </uix:TargetAnchorable.Anchors>
-                </uix:TargetAnchorable>
+                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/login.html?lang=english" DesignTimeRectangle="463, 333, 440, 40" ElementType="InputBox" FriendlyName="'INPUT username_val'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' class='input' name='username_val' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='input' name='username_val' aaname='' /&gt;" Guid="46aecdc4-e7aa-46b7-9f7e-5edbb8f68909" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAbwAAAAsCAYAAAAeoQ0oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOcSURBVHhe7ds9T9tQFIBh/z6mjEhMLLBnY8rCxMQEMz+ABbGAhJA8dGEoxQMSQkYtSIlQiZSQgQSF05xrX9t1TcmHcbD9PtIR8XU+qDq8uo5xJOHxaSg3dwO5uu7JD4ZhGIYp4WjDtGXatCQTvJfh2JzMeiHDMAzDlHW0bdq4KHg2dvqz9/wq4zdzDgCA0tGGacuSbVOObvnsAqEDAFSFNs1GT1vn2AOtIQAAVaJts5s6x96gwu4OAFA12jZtnLbO0Qc6AABUke0cwQMAVBrBAwDUAsEDANQCwQMA1ALBAwDUAsEDANQCwQMA1MInBG8gt6e70lxtyMrKijRWm7J7ejtZBQBgeXIO3lAu99dM6NKztn85OQsAwHLkG7z7Q9nMiF0wm3J4Hz4PAICC5Rq87nEzI3TxNI+74TMBACgWwQMA1EKuwSv6kmbfd8X12jIKjwEAeE++wSvyppVhWzzPF9/zpP2F74YZdTxx/X54BABYlpyDp4r5swQNidcZffmgEDwA+Bo+IXhFGEnb7ux0p+f68k9Ser64rhuNb/9p76ybMCXWNaaBvvhuahep72EvpYaP+8nXh4Ezl1wT76mfZdYIIAAULrfgdS8OpLUR7+p29vdkz8xOvNvbaMnBRQ43rpjLmfa7O41fImjKRC0Rwcnz23r+nfUgdsloauTse04RvMlzo0CaAKdCmggcwQOA5cgleJ2jpjTC7+o+noY0jzrhK+ej0Yh3YOmoZATQmG09fs/pdnjxb/P375cOHgBgORYPXvdEtjLD9r/ZkpO5N3rB7it5qTAYG6WMQBkzrkchI3gAUAULB29w1soI2sfTOpvzNpaMwKg4Mvns8MznsMMDgMpYOHh6OTMraB/NvJc105czI4nwmMhM813dVN/hBUGMPzM4N2/w9BwBBIDilS54XuZlSZWMlI1Y+nLntOupHV94I0pwbhLGGXZ4USDD9yR4ALAcCwdPOueyvR7chTntNNa35Xyx+1YAAJjJ4sEDAKAECB4AoBYIHgCgFggeAKAWCB4AoBYIHgCgFggeAKAWCB4AoBai4F2FD8Zv4RkAACpC26aN09Y5N3cDc9B7fg1PAwBQDdo2bZy2znl8GkYH7PIAAFWhTbObOm2do4t2QX9qDQkfAKCstGHasmTblAney3AcnWAYhmGYqoy2TRsXBc/SLZ+etDeyMOWebxcP8t37af5vfz38NsdZz2MYhqnSaMO0Zdq0mMgfBf27s+PiO/sAAAAASUVORK5CYII=" InformativeScreenshot="7945345e2741537b7b6db30ae2cb3604.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
               </uix:NTypeInto.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -262,15 +270,9 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" IsPassword="True" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" SecureText="[FtpPasswaord]" Version="V1">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT password_val'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" IsPassword="True" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" SecureText="[FtpPasswaord]" Version="V1">
               <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/login.html" DesignTimeRectangle="586, 452, 160, 21" ElementType="InputBoxPassword" FriendlyName="'INPUT password_val'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='password' tag='INPUT' class='' aaname='Password:' /&gt;" Guid="3c2cd167-64c3-4fd1-9e70-a1be572c5535" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKQAAAAZCAYAAAC/4YXqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEiSURBVHhe7dsxisJAFIDhOUIOkBttI3uVNOm9w1aWHsEulYXdVjmEWG6VJuDTN+szDqsLAcd5yP/gQxJnisBPqkkYhkEAL65BjuMoDFNitL0kSIuxaRqp61qqqgKy09a0OR2LMgapo3/c2wTkZlEmQdqbsdt+y+HnCGSnrWlz2p5OEqTVaotDCMlmIAfrTocgURxBwhWChCsECVcIEq7MCvJrEeLvx2p/ub+T9nyt99rud12/+ozXYbGWPq7ZZ92H9zIryMlSNud714hUDGkKRsVouuW05un7pgfBe5gVJG9I5DYryNuNQA4ECVcIEq4QJFwhSLhCkHDlYZCch8Sr/XsekhPjKOXPiXG+qUEJ2prFmHxTcxslw7x6LMYkSKC8QU7Sn5uDNtGW9wAAAABJRU5ErkJggg==" InformativeScreenshot="a9d8450e449ba2f5dcada10a8acf113e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive">
-                  <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target DesignTimeRectangle="520, 455, 63, 14" ElementType="Text" FriendlyName="'Password'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='LABEL' class='' aaname='Password:' check:innerText='Password:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEMAAAASCAYAAAAAGGMhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGLSURBVFhH7VRBjsMgDOSHSP1PxFPSD+wbUmmf0UN+kauLAcPYoU3VrVa7KodRG2wP48Hgtm2jgYxhBmCYARhmAD7DjOtM3jlyp5nWXrxAmbGePTkuUgi0QM6/xI/MmBb9fUDy5/EOMyqJ8zRfV5pP/B+gyBcKGIsIlxxbJr3upq/Cxbyc07htTf62e0tdBDS6JP0ldgmQX1D1ilY99U+awUUsqBXr3D05x7kR3VThjDV6vRnpz+uOL+da48p31SiI69/NoNQ8GPayGTtzELgBCKpNJ8CJWo5ycqn5VO/Jcy7n9bhrI01Xq9Xx7gGYnB6OH1BsQkgRZQMR0FBc74xrEgkC03jLL9ftjMp5tRHhtMaV+HvN6E2CCBDCuxvYkW+xaliqkakJFHi9Nhav18Q6zDWAfX53Mh6ZITE0hzeDmiZGvzOWAycxC29G4n3OfAdvBjb6SGvKeeHNsKgnm4jjHZcNRBAgTwW8GYKe6F2jEUqD5ZH8iDunfldrij9hxqdjmAEYZgCGGRUb3QC8r8d6r0fWbwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
-                    </scg:List>
-                  </uix:TargetAnchorable.Anchors>
-                </uix:TargetAnchorable>
+                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/login.html?lang=english" DesignTimeRectangle="463, 385, 440, 40" ElementType="InputBoxPassword" FriendlyName="'INPUT password_val'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='password' class='input' name='password_val' placeholder='Password:' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='password' class='input' name='password_val' placeholder='Password:' aaname='' /&gt;" Guid="b22c7bd1-cafe-4162-9533-29cc634ddd92" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAbwAAAAsCAYAAAAeoQ0oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQLSURBVHhe7dy/TttQFIDxPB9TRiSmTEwsPABZGBlYSB+AmYUXiBSJDlSiKRkqMRi1AsVCZUjIQALh1Of6XvvaCW0hqZHt7ycdEfs6f6oOn65J2xDP3f1Urq4ncvl9JN8YhmEYpoSjDdOWadN8JniP07lZXPZEhmEYhinraNu0cUnwXOz05+jhSeYvZg0AgNLRhmnL/Laphm753AlCBwCoCm2ai562ruEOtIYAAFSJts1t6hruCyrs7gAAVaNt08Zp6xr6QAcAgCpynSN4AIBKI3gAgFogeACAWiB4AIBaIHgAgFogeACAWiB4AIBaWH/wnkM5P27L9mZTNjY2pLm5Le3jcwmf7ToAAB9gvcGb9KXTikOXn2arI/34/+0EAKBwawzeVM4OXOya0to7lM6njhzutaTpondwFl0FAEDx1he8UVfaNmxbR31JN3MT6R9t2RC2pcuvCQEAH2B9wbs9kR0bvM6FPedcdGzwduTk1p4DAKBA6wteErU/BW/J2ltNhzLo9aTnzSCc2cXyGQfl/vwAUBYlDV4gY3sYJUOCEkeP4AFAMVYPXtiV/Ve+mfnaNFv70g3t899qIXiRUSC9IHOmNAgeABRj5eCFp7tLo/a32T19Z/GWBG8WDmzwZjIc+Lc7vetyt0ID+0fV4CTXD4Yy03jqz3jZPm8gw+TrpbqjdMf591tyXRi9nq7ZIJvP6r3f0AVv4X0AAOtUgeDFtzRNwKK1INktxTGKd0/xYxc5fc5YH+fiNhuNo8d+0NJAJbswfX/zHBs7f2epr5d8tvhz+evmtfyYmusJHgAUoaTBszskO2nIsvI7v4Vbh5lApXTXl+4A7S7N26Glgco/1w9rNpzZtRS3NAGgGCUN3mKknMwtSp1kh2V3ZJlzEbvL8m9HpqGMomV2ZBovfU99DXtdbnfopAHLBy9/HCN4AFCMSgUvH480XFkmivnz/i1F9x5R1Nzr6XOCkQufd41ZTcXXmUf/sMOLzxE8APj/KhS8fFDsjs7t1LzAuRDOwuCVHVi8kxu43ZzS+EXHaSj917cyt0gXd3QmtPwODwA+RIWCF7EBcbcogyD7O7xkzUUnc31292Wi6MfJvO/yHVr6Gv7nWgyeMtFz10efTY8JHgD8fysHr/B/hwcAwDusHjwAAEqA4AEAaoHgAQBqgeABAGqB4AEAaoHgAQBqgeABAGqB4AEAaiEJ3qV9MH+xKwAAVIS2TRunrWtcXU/MwejhyS4DAFAN2jZtnLaucXc/TQ7Y5QEAqkKb5jZ12rqGnnQn9KfWkPABAMpKG6Yt89umTPAep/NkgWEYhmGqMto2bVwSPEe3fLrovsjClHs+f7mRr4Mf5u/2580vc7zsOoZhmCqNNkxbpk1LifwG3nJ0SIGQ8LQAAAAASUVORK5CYII=" InformativeScreenshot="27719631acdcc6c8880dd36cb05d0456.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
               </uix:NTypeInto.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -279,12 +281,12 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <uix:NClick ClickType="Single" DisplayName="Click 'Login'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
+            <uix:NClick ClickType="Double" DisplayName="Click 'Login'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
               <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/login.html" DesignTimeRectangle="586, 511, 110, 27" ElementType="Button" FriendlyName="'Login'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='5' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='submit' tag='INPUT' class='btn_login' aaname=' Login ' check:text='Login' /&gt;" Guid="63cadbe7-b720-4b00-8a29-217e865c093d" ImageBase64="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" InformativeScreenshot="02202c6b1c0d25c51442855ec9313aa9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
+                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/login.html?lang=english" DesignTimeRectangle="463, 561, 440, 40" ElementType="Button" FriendlyName="'Login'" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='*Login*' parentclass='control' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' aaname='*Login*' parentclass='control' type='' class='button is-info is-fullwidth' check:text='Login' /&gt;" Guid="668f280a-4592-4ac8-a61d-bcc17f9b8241" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAbwAAAAsCAYAAAAeoQ0oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMYSURBVHhe7d29UhNRHMZh78TS27JwxsuwkBuwVBs7KS0sHAs7OqWwsMkMHQVaUTh+QHLMye5/2d0sEjAqOed5Z55CstlQwPxmyYd3kpmZWQUTPDMzq2KD4H08nqcHL8/Svcff091HALB7csNyy3LT+uuCl28QOgBKkZvWj14XvFzDqTsAwK7KbYt1wXN1B0BpcttiXfCmDgSAXRcTPACKFhM8AIoWEzwAihYTPACKFhM8AIoWEzwAihYTPACKFhM8AIoWEzwAihYTPKq292mRPh+fp/u9r+2ftL8Usa+L9Or1j8H9/r+zdPBt+b19OZ+4DeiLCR5V2//S/Px/P7mI3lrw8s4W6dmT9fuveTNPp8vDD95M3LZVggebigkeVYvg5fWj13nShmW52fvRbVP+WfCATcUEj6r1g5c3Fb04ZnY4/PokwYNbJyZ4VOPZcfvDfsXG0dt68A4XzQlj3+Zpb3xMe57Y6dH56krz9Cj+38rmyrP7d/e452nW3GW1i+OhXjHBoxrjq7nfbfCc3haDt3fUnKt/e3P+RdqP49pz9B8vvoergjc4TxtWV5vULiZ4VOM6wUvzZTieD+/358Frrr7WzzP8+urx1l6MMgrcJcEbnnt8H6hTTPCoxsbBW8bu4O3F2xC2FrzVbb0rsJ78GE2YmkitP9ZmwRs+ruBBFhM8qnH/3Tx9OFmkWc/nH+0vQGwUu0zwYLfFBI+qDa76JmK33bclbPInzfbx1v6k2RwjeHB9McGjal3werH7m288v/RFK/1XarYvNumHMb5PwYPriwkeVVvFbfyc3Z98tFgbnrX1rtgiet2mPi1l9NaF2eE4XoIHm4oJHnV7+jM9fLFhzP4r8YKbigke7IIr/lQKXC4meHDbHC5GV3LNC1Z8UDTcTEzw4LaZeh5Q7ODGYoIHQNFiggdA0WKCB0DRYoIHQNFiggdA0WKCB0DRYl3w7j2ePhAAdlVuW6wL3oOXPrIIgLLktsW64H08nrvKA6AYuWm5bbEueHn5hlxD4QNgV+WG5Zb1Y5c3CJ6ZmVmpEzwzM6tgKf0CbOY7iBIvrXYAAAAASUVORK5CYII=" InformativeScreenshot="1f71720871e55c21a30ecc7fcb5173fb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
                     <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target DesignTimeRectangle="497, 479, 86, 27" ElementType="Text" FriendlyName="'Language'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='font' aaname='Language:' check:innerText='Language:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAfCAYAAABnPdrdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGdSURBVGhD7Za9zYNADIZZiC1YgQmYg1XYhIKSjgEooaRDtPfpRXL0xgkX8mf4IheP4PDZZz+gKMmyLGGe54Cr8z1ctBEu2ggXbYSLNsJFG+GijXDRRrhoI1y0ES7aCBPRXdeFNE1DlmVhGIa7e34dF23E4aLrug5JklyBZ5yX5/mKjqMWanKuxKVuURRhmqbLXukhdi6oquomLrUQL8vy8hw9olfuSc96CtEYCvfSpDQueXqNgcdxXK8YVATJ8FiLyJjorXN1Lp+LNc6RvbquXsucp/vpYFl6QB6iaZqrmM59JDp2Lt8jxn30fb/W2DqXazKnEC2NMmj626K3zo2Jbtt2vdd5vP8eh4qGADTPTfKQ74iO5eKrjJ27RzSfu4dTiEYMe2T9jKy9uXiG2J5c2Qvh6FPWUku/CIBnWHOPPKupaDTHoDmO4YoGcY+mtSw9RCwX5/I/B9R4JldkAsS4Dx0XDhdtwdaAn0BemPxLeYV/LZq/WPApyfLSuPY7ksHPfNFnx0Ub4aKNcNFGuGgjXLQRLtoIF22EizZhCX8sz9u7FqKvMwAAAABJRU5ErkJggg==" SearchSteps="Selector, Image" />
+                      <uix:Target DesignTimeRectangle="672, 569, 39, 24" ElementType="Text" FriendlyName="'Login'" FullSelectorArgument="&lt;webctrl aaname=' Login ' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' Login ' tag='SPAN' type='' class='' check:innerText='Login' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACsAAAAcCAYAAAD4IkbVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEXSURBVFhH7ZZLDoQgDIbnJnPU2XgYj+AF3HoBEy7gypUmPjpK0SkPBzBg4gxN/oVQ2g9s0cfz1cNdlGBjKcHGUoKNpQRr1wBlBwDNaJg7lgxbTNAuMcqCjEXRrWDP6cdhq3nxINZNkKk+Is5mLRv5a2/ZIHywDPbnPe8INS7h9vFHecFmDIPQ+bxZR2bINz8Ro65UHzusFEccCs3lAYu7phCmcQ6mNY4CdwArx1bX+MDyObJzohUQg2ICfUNusHLev4F1KgNMoJcB+lwI+6XB6I0gGoNuyrXBTsFqRk5qA97N9BVSrre6UhOHgI0mPfEZXQNrKS9XhYddSkA+QWwu358Wk8LDmuo+AOiqi2o2jBJsLN0Itoc3jx/y7xv3HX8AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
@@ -297,12 +299,63 @@
               </sap:WorkflowViewStateService.ViewState>
             </uix:NClick>
             <Delay DisplayName="Delay 8s" Duration="00:00:08" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-            <ui:UiElementExists DisplayName="Log out Button Exists" Exists="[IsLoggedin]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <Sequence DisplayName="Check If Pass is experied" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="IsPasswordExpired" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:UiElementExists DisplayName="Element Exists 'Change Pasward'" Exists="[IsPasswordExpired]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cd59c53f-8645-4084-9da1-644459e36151" InformativeScreenshot="e098d8661c9e1167d19ca015c4871ef0" Selector="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='TD' colName=' *Change Password' /&gt;" TimeoutMS="5000">
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:UiElementExists>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Has Passward Expired: &quot;+IsPasswordExpired.ToString]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <If Condition="[IsPasswordExpired]" DisplayName="If Passward is TRUE" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;ERRORCODE002 Passward has Expired, Please change the passward.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </If.Then>
+                <If.Else>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <ui:UiElementExists DisplayName="Element Exists 'TD'" Exists="[IsLoggedIn]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="499120d5-6e44-4b2f-a834-d2b5247d0f99" InformativeScreenshot="2d52a2b729be07c762beb55664e8010e" Selector="&lt;webctrl aaname='Logout' tableRow='1' tag='INPUT' /&gt;&lt;nav up='2' /&gt;&lt;webctrl isleaf='1' tableCol='9' tableRow='1' tag='TD' aaname='Logout' colName='Logout' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7753ada5-51f0-44e6-9dc4-19f0ef611864" InformativeScreenshot="429815dc272e4a8547c11b46ea5d86ab" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' parentid='main_interface' tableCol='1' /&gt;" TimeoutMS="3000">
                   <ui:Target.WaitForReady>
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
@@ -323,23 +376,62 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:LogMessage DisplayName="Log Message: Login Success" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Bot Has Logged in Successfully&quot;]" />
+                <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="304,337" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Bot has login successfully&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                  <uix:NClick ClickType="Double" DisplayName="Click Folder" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/main.html" DesignTimeRectangle="26, 329, 500, 28" FriendlyName="'DMS REPORT'" FullSelectorArgument="[&quot;&lt;webctrl id='listtable' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='*&quot;+in_FolderName+&quot;' name='*&quot;+in_FolderName+&quot;' rowName='*&quot;+in_FolderName+&quot;' /&gt;&quot;]" Guid="68a4754d-bcc9-46f7-8c60-781bcf363816" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAfgAAAAgCAYAAAD+MmqJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATmSURBVHhe7d3raxxlFIDx/GF+UVCsiuBi+qFSBAUFoVIpBEWkWoKlYLEoRigIomyoFwxtKXhpNBfd1PRCYlKMYhOb1mysSZqU2tiKHOeceWf7zi07Gy1DJ88PDkkm805m8yHPTDfZdq2ti+gAAIDqIPAAAFQQgQcAoIIIPAAAFUTgAQCoIAIPAEAFEXgAACqotMCvTL8lKz+8Kb+fftVmcfwVaZ56WeZHXrC5OPR8OKMvuRUAAKCo0gK/PLFfVhcOy/LUAQv86txhuXTuXfl7/Sv559ZIa/5aOyazQ3vcKgAAUESpgb9144TNzesDcuXCQfnl62dl+tRBWfvjuMVdY3/zz6Myc2KnWwUAAIooFPhmsyl9fX3S09PTdnQ/3b+dWOCDiGvkNfCTjTdsbFsw61c/JfAAAHSoUOA12o1Gw320Md1P929HAx9FXON+4+pHFvLJb/fb6Lbry3W5duV9OX90u1sFAACKKBR4vTPvRJH99Xl3P+4acg382aG9MjGyV64tvier84dsCDwAAJ1olhx4L+7Rnfrpkz02GvaV2QPS/Ol1+fnkkzJ/5m23EgAAbKSxr6vcwEdh17v15fl3ZHrgcRn/fJeNhn1xao/NwsQumfjkEbcyx1ivdHUFD8if7npwDeNrSG/W9kt1qSW3R9v82Zf/NEWzvxbfN5jeMfdJlXV+wdT6w6+YXt8bnK2vKfVu//OJ40ePzZ/o8WQ9Fm/ixwEA3N20B0FTygq8/t27xt3+VC6Iu45G/PvjT9tEYb989hlZWloqGPh4FO0KJrYtfNC1IJR+1HS/WnfwzWgFPoxlPHwa2GR0b7NA+xcIdj41qV/yPy6+Pgx+tL+Lu3+B4aIdXSCkzzljjbJ13nkBAKrF/ZwvLfD6ojZ+3PWOXSM++tkOGw27zq/fbbfAn+m/363MkRNQi3wrcmHg62PBg/fvboP3G35g28Q4SyrwyeB2GPjWuWqI89bGtqcvStLHDBB4AKg2+zkf9KGswP/WeNHCrn//rnFf+LFXzh3ZJsMfP2ZzcewJi/vcaO0/BT4dwTBuGn6NoUYwetuKoX1zMu5+N5CKafJ88s7PSa33Qhy/SPF5FwH2fvoO/vYdvkPgAaDa3M/50gKvL0cbxf3y+ddsNOLf9D8kI0cetrDPDj9qs/OLC5sPvLuSCbd7QdTt3frP9WFUswMbhNUb/+44ydb7+/vHUnZ+3ufdxJ6D99ZY1N3H9hRCMtTGj3r4vn/szPMl8ABQcWHrSg283rVHcZ8d320RH/zgPhmuP9CKu862+tT/fgcf3eFGEUwFPiEMeH4YY+uzIlrkDt4PdDL2Hd7B564h8ABQedaAsgKv/5GMH/eNAq8zObDDrcyRE9B46PwgxrULfDKgScn1qeMVCXze1y988eKfX875EngA2AIK/h38nXglu7nB5+ylaXVmBp+yt+Mf3ivHDt1jo7GPpm3cVUYELe6xbQUDr8dK3v12HOjEb7F3vN63md+iD9jXTDxeAg8AW0KhwN+J16L36YvYzHy5W8brD7otm2Ax06B7kwpmwcC7WMaPlx9nlR1odxwNc9b5BZP3HHyai7y3Nn53nhH4gB3Xf8wEHgC2hEKBBwAAdxcCDwBABRF4AAAqiMADAFBBBB4AgAoi8AAAVBCBBwCgggg8AAAVROABAKgckX8B/4KmI5+vAvcAAAAASUVORK5CYII=" InformativeScreenshot="6b8307edf51310e1f65dd959d74cb908.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <Assign DisplayName="Assign out_Login" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_Login]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">YES</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
               </If.Then>
               <If.Else>
-                <ui:LogMessage DisplayName="Log Message: Login Fail" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Bot Has Logged in Failed&quot;]" />
+                <Sequence DisplayName="Login Fail" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message: Login Fail" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Bot has failed to login&quot;]" />
+                  <Assign DisplayName="Assign out_Login" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_Login]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">NO</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
               </If.Else>
             </If>
-            <uix:NClick ClickType="Double" DisplayName="Click 'SETTLEMENT REPORT'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/main.html" DesignTimeRectangle="26, 329, 500, 28" FriendlyName="'SETTLEMENT REPORT'" FullSelectorArgument="[&quot;&lt;webctrl id='listtable' tableRow='*' tag='TABLE' /&gt;&lt;webctrl tableRow='*' tag='TD' aaname='  &quot;+in_FolderName+&quot;' parentclass='listtr01' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='listtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='  SETTLEMENT REPORT' parentclass='listtr01' class='paddingtd' check:text='SETTLEMENT REPORT' /&gt;" Guid="e21d2ba2-1553-4444-892b-dd71c9fe096a" ImageBase64="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" InformativeScreenshot="de66002f9b05589e1075447d65b9c685.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
-              </uix:NClick.Target>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uix:NClick>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>

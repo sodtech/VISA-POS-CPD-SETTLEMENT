@@ -2,12 +2,13 @@
   <x:Members>
     <x:Property Name="in_Selector" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="Out_FileDownloaded" Type="OutArgument(si:FileInfo)" />
+    <x:Property Name="out_HasFileDownloaded" Type="InArgument(x:String)" />
+    <x:Property Name="out_FileDownloaded" Type="OutArgument(si:FileInfo)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>709,948</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>675,1791</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadReport_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -92,7 +93,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DownloadReport" sap:VirtualizedContainerService.HintSize="476,883" sap2010:WorkflowViewState.IdRef="Sequence_13">
+  <Sequence DisplayName="DownloadReport" sap:VirtualizedContainerService.HintSize="632,1726" sap2010:WorkflowViewState.IdRef="Sequence_13">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FtpUrl" />
       <Variable x:TypeArguments="x:String" Name="DownloadFolder" />
@@ -104,7 +105,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="590,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="473,223" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
@@ -149,7 +150,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:MultipleAssign DisplayName="WF Variables" sap:VirtualizedContainerService.HintSize="434,131" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+    <ui:MultipleAssign DisplayName="WF Variables" sap:VirtualizedContainerService.HintSize="590,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -172,54 +173,71 @@
       </ui:MultipleAssign.AssignOperations>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" DisplayName="Private: Use Browser Chrome: Wing FTP Server - Web Client" sap:VirtualizedContainerService.HintSize="434,529" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Private: Use Browser Chrome: Wing FTP Server - Web Client" sap:VirtualizedContainerService.HintSize="590,1346" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do: Log in" sap:VirtualizedContainerService.HintSize="242,313" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Do: Log in" sap:VirtualizedContainerService.HintSize="556,1130" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Tab" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2">
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Tab" sap:VirtualizedContainerService.HintSize="514,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MaximizeWindow>
-            <ui:GetLastDownloadedFile IgnoreFiles="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[DownloadFolder]" File="[Out_FileDownloaded]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_2">
+            <ui:GetLastDownloadedFile Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[DownloadFolder]" File="[out_FileDownloaded]" sap:VirtualizedContainerService.HintSize="514,974" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_2" IgnoreFiles="tmp,crdownload">
               <ui:GetLastDownloadedFile.Body>
                 <ActivityAction>
-                  <Sequence DisplayName="Do: Download Button" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence DisplayName="Do: Download Button" sap:VirtualizedContainerService.HintSize="480,719" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch DisplayName="Try Catch: Download Button" sap:VirtualizedContainerService.HintSize="438,383" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                    <TryCatch DisplayName="Try Catch: Download Button" sap:VirtualizedContainerService.HintSize="438,627" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                       <TryCatch.Try>
-                        <uix:NClick ClickType="Double" DisplayName="Click REPORT'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
-                          <uix:NClick.Target>
-                            <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/main.html" DesignTimeRectangle="26, 329, 500, 28" FriendlyName="'SETTLEMENT REPORT'" FullSelectorArgument="[&quot;&lt;webctrl id='listtable' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='  &quot;+in_selector+&quot;' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='listtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='  SETTLEMENT REPORT' parentclass='listtr01' class='paddingtd' check:text='SETTLEMENT REPORT' /&gt;" Guid="e21d2ba2-1553-4444-892b-dd71c9fe096a" ImageBase64="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" InformativeScreenshot="de66002f9b05589e1075447d65b9c685.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
-                          </uix:NClick.Target>
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,400" sap2010:WorkflowViewState.IdRef="Sequence_15">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </uix:NClick>
+                          <uix:NClick ClickType="Double" DisplayName="Click REPORT'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2eff1393-66ee-4dc6-85d7-3d4758c82141" Version="V1">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://fileserver.up-ng.com/main.html" DesignTimeRectangle="26, 329, 500, 28" FriendlyName="'SETTLEMENT REPORT'" FullSelectorArgument="[&quot;&lt;webctrl id='listtable' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='  &quot;+in_selector+&quot;' /&gt;&quot;]" FuzzySelectorArgument="&lt;webctrl id='listtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='  SETTLEMENT REPORT' parentclass='listtr01' class='paddingtd' check:text='SETTLEMENT REPORT' /&gt;" Guid="e21d2ba2-1553-4444-892b-dd71c9fe096a" ImageBase64="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" InformativeScreenshot="de66002f9b05589e1075447d65b9c685.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wing FTP Server - Web Client' /&gt;" SearchSteps="Selector, Image" Visibility="Interactive" />
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke HandleSaveAsPopUp workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Downloads\HandleSaveAsPopUp.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_FtpURL">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FtpUrl" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_DownloadFolder">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DownloadFolder" />
+                              </InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                        </Sequence>
                       </TryCatch.Try>
                       <TryCatch.Catches>
                         <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
@@ -243,34 +261,11 @@
               </ui:GetLastDownloadedFile.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:GetLastDownloadedFile>
-            <Sequence DisplayName="Sequence: Check if Correct File Has been Download" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_11">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[in_Selector = Out_FileDownloaded.Name]" DisplayName="Check If correct file has been downloaded" sap:VirtualizedContainerService.HintSize="484,219" sap2010:WorkflowViewState.IdRef="If_1">
-                <If.Then>
-                  <ui:LogMessage DisplayName="Log Message: Right File " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Right File has been Downloaded: PROCEED&quot;]">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:LogMessage>
-                </If.Then>
-                <If.Else>
-                  <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;Wrong File Has been Downloaded, I cant proceed this time.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
-                </If.Else>
-              </If>
-            </Sequence>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -284,5 +279,45 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
+    <Sequence sap:VirtualizedContainerService.HintSize="590,66" sap2010:WorkflowViewState.IdRef="Sequence_14">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot; File has been Downloaded: PROCEED&quot;]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Full Path Downloaded:&quot;+out_FileDownloaded.FullName]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Full Path Expension:&quot;+out_FileDownloaded.Extension]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <Assign DisplayName="Assign out_HasFileDownloaded" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_HasFileDownloaded]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">YES</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
   </Sequence>
 </Activity>
