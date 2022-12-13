@@ -306,21 +306,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BuildDataTable>
-    <Sequence DisplayName="DONE" sap:VirtualizedContainerService.HintSize="242,688" sap2010:WorkflowViewState.IdRef="Sequence_29">
+    <Sequence DisplayName="ALL Report" sap:VirtualizedContainerService.HintSize="242,688" sap2010:WorkflowViewState.IdRef="Sequence_29">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Sequence: MDB Report" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <Sequence DisplayName="Sequence: Issuer" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_59">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Decimal" Name="DBTrewTotalSumFee" />
           <Variable x:TypeArguments="x:Decimal" Name="DBTrewTotalSumVat" />
-          <Variable x:TypeArguments="x:Decimal" Name="MdbVatSum" />
-          <Variable x:TypeArguments="x:Decimal" Name="DB" />
-          <Variable x:TypeArguments="x:Decimal" Name="DBMbdPayment" />
-          <Variable x:TypeArguments="x:Decimal" Name="DBMbdVatPayment" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -328,7 +324,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message: MDB Report" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Bot is about to update MDB Payment Report&quot;]">
+        <ui:LogMessage DisplayName="Log Message: Issuer Report" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Bot is about to update Issuer Report&quot;]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -336,190 +332,12 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:LogMessage>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Subsidy Col" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[MdbSubsidySum]</OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">MDB Sheet</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_ColName">TOTAL SUBSIDY AMOUNT</InArgument>
-            <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <Assign DisplayName="Assign MdbVatSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_11">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:Decimal">[MdbVatSum]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("TOTAL VAT CHARGE").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("TOTAL VAT CHARGE").ToString)))]</InArgument>
-          </Assign.Value>
-        </Assign>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB MDBS PAYMENT" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBMbdPayment]</OutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB VAT PAYMENT" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">
-              <mva:VisualBasicReference x:TypeArguments="x:Decimal" ExpressionText="DBMbdVatPayment" />
-            </OutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <If Condition="True" DisplayName="If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_3">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Sequence: Update Row" sap:VirtualizedContainerService.HintSize="376,821" sap2010:WorkflowViewState.IdRef="Sequence_16">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Update Mdb Payement " sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Update MDB Payment on the Upload file&quot;]" />
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMerchantDetails For Mdb Acct" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_53" UnSafe="False" WorkflowFileName="POS_CPD\GetMerchantDetails.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MerchantDetailsDT">[MerchantDetailsDT]</InArgument>
-                  <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_MerchantDataRow">[MerchantDataRow]</OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_RowFilter">MDB ACT NUMBER</InArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Credit_MDB" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd-mm-yy")+" MDBS paymt TRXN NIBSS"]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbSubsidySum]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Debit_MDB" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_54" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd-mm-yy")+" VISA /NMC PETROL FEE"]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbSubsidySum]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Credit_MDB VAT" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_55" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["MDBVAT PAYMENT "+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbVatSum]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Debit_MDB VAT" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_56" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["MDBVAT PAYMENT "+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbVatSum]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_15">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
-            </Sequence>
-          </If.Else>
-        </If>
-      </Sequence>
-      <Sequence DisplayName="Sequence: Treat Trew Report" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
-        <Sequence.Variables>
-          <Variable x:TypeArguments="x:Decimal" Name="DBTrewTotalSumVat" />
-        </Sequence.Variables>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message: Fee Log" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Bot is getting the summaration for Fee and Vat&quot;]">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:LogMessage>
-        <Sequence DisplayName="Fee and Vat Sumation For all Sheet" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Update all Sheet for issuer" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_58">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="FeeCol" />
-            <Variable x:TypeArguments="x:String" Name="VatCol" />
+            <Variable x:TypeArguments="x:Decimal" Name="IssuerSummarySum" />
+            <Variable x:TypeArguments="x:Decimal" Name="IssuerTotalProcessingFeeSum" />
+            <Variable x:TypeArguments="x:Decimal" Name="IssuerProcessingVatSum" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -527,30 +345,11 @@ Sum(Function(x) Convert.ToDecimal((x("TOTAL VAT CHARGE").ToString)))]</InArgumen
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign FeeCol" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[FeeCol]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">TERMINALOWNERFEE</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign DisplayName="Assign VatCol" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[VatCol]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">TERMINALOWNERVAT</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Visa DR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMerchantDetails Issuer" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_93" UnSafe="False" WorkflowFileName="POS_CPD\GetMerchantDetails.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw Visa Dr Sheet</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
-              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MerchantDetailsDT">[MerchantDetailsDT]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_MerchantDataRow">[MerchantDataRow]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_RowFilter" xml:space="preserve">ISSUER ACT NUMBER </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -559,257 +358,148 @@ Sum(Function(x) Convert.ToDecimal((x("TOTAL VAT CHARGE").ToString)))]</InArgumen
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_24">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Visa CR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw Visa Cr Sheet</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
-              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
+          <Sequence DisplayName="Summary Sheet" sap:VirtualizedContainerService.HintSize="242,66" sap2010:WorkflowViewState.IdRef="Sequence_53">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Decimal" Name="IssuerTotalssuerVatSum" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_25">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Mastercard CR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw MasterCard Cr Sheet</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
-              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_26">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Mastercard DR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw MasterCard Dr Sheet</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
-              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_27">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum PayAttitude CR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw PayA Cr Sheet</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
-              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_28">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum PayAttitude DR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw PayA Dr Sheet</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
-              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_29">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumFee" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBTrewTotalSumFee]</OutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumVat" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBTrewTotalSumVat]</OutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMerchantDetails For Mdb Acct" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_90" UnSafe="False" WorkflowFileName="POS_CPD\GetMerchantDetails.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MerchantDetailsDT">[MerchantDetailsDT]</InArgument>
-            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_MerchantDataRow">[MerchantDataRow]</OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_RowFilter">TREW ACCT NUMBER</InArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <If Condition="True" DisplayName="FEE Cr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_1">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Sequence: Update Credit Row" sap:VirtualizedContainerService.HintSize="376,274" sap2010:WorkflowViewState.IdRef="Sequence_10">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Update Fee Cr for Trew" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Update Fee Cr on the Upload file&quot;]" />
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yy")+ " MC/VISA POS TERM OWNR INCM"]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumVat]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT VISA").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Issuer Summary Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_94" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+                <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerSummarySum]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer Summary</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ColName">ISSUER NET POSITION</InArgument>
+                <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
-            </Sequence>
-          </If.Else>
-        </If>
-        <If Condition="True" DisplayName="FEE Dr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_8">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Sequence: Update Fee Debit Row" sap:VirtualizedContainerService.HintSize="376,335" sap2010:WorkflowViewState.IdRef="Sequence_49">
+            </ui:InvokeWorkflowFile>
+            <Assign DisplayName="Assign IssuerProcessingVatSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Decimal">[IssuerProcessingVatSum]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("PROCESSING VAT").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("PROCESSING VAT").ToString)))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign IssuerTotalProcessingFeeSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_31">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Decimal">[IssuerTotalProcessingFeeSum]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerProcessingVatSum +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("PROCESSING FEE").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("PROCESSING FEE").ToString)))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign IssuerTotalssuerVatSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_32">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Decimal">[IssuerTotalssuerVatSum]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerProcessingVatSum +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("ISSUER VAT").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("ISSUER VAT").ToString)))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Summary_Row workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_95" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["ISSO PAYMENT "+in_ReportDate.ToString("dd.MM.yyyy")]</InArgument>
+                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerSummarySum]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Update Fee for Trew" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Update Fee Dr on the Upload file&quot;]" />
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_91" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Processing_Row workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_96" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" VISA POS PRO FEE"]</InArgument>
+                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerTotalProcessingFeeSum]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Issuer Vat_Row workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_97" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" VISA POS ISSUER FEE VAT"]</InArgument>
+                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerTotalssuerVatSum]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT ISSUER VAT").ToString]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+          <Sequence DisplayName="All Issuer DR Sheet" sap:VirtualizedContainerService.HintSize="242,461" sap2010:WorkflowViewState.IdRef="Sequence_57">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Decimal" Name="IssuerVisaDrTransSum" />
+              <Variable x:TypeArguments="x:Decimal" Name="IssuerFeeTransSum" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="VISA" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_54">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Issuer Visa Dr Sheet" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_98" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["NEFT FROM:UNIFIED PAYMENTS/VAS TERWVAT PAYMENT"+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumFee]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+                  <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerVisaDrTransSum]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer Visa Dr</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ColName">TRANAMOUNT</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Visa Dr_Row" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_99" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" (792000/2)POS DOM"]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerVisaDrTransSum]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT VISA").ToString]</InArgument>
                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
@@ -819,58 +509,35 @@ Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
+              <Assign DisplayName="Assign IssuerFeeVisaDrTransSum" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="Assign_33">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Decimal">[IssuerFeeTransSum]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("ISSUER FEE (IRF) VALUE").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InArgument>
+                </Assign.Value>
+              </Assign>
             </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="242,205" sap2010:WorkflowViewState.IdRef="Sequence_50">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
-            </Sequence>
-          </If.Else>
-        </If>
-        <If Condition="True" DisplayName="VAT Cr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_9">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Sequence: Update Credit Row" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_51">
+            <Sequence DisplayName="PAY ATTITIDE" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_55">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Decimal" Name="IssuerPayADrTransSum" />
+              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Update Vat for Trew" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Update Vat Cr on the Upload file&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_92" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Issuer Pay Attitiude Dr Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_100" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["NEFT FROM:UNIFIED PAYMENTS/VAS TERWVAT PAYMENT"+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumVat]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+                  <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerPayADrTransSum]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer PayAttitude Dr</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ColName">TRANAMOUNT</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -879,57 +546,111 @@ Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_52">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_9" />
-            </Sequence>
-          </If.Else>
-        </If>
-        <If Condition="True" DisplayName="VAT Dr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_7">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Sequence: Update Debit Row" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_46">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Update Vat for Trew" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Update Vat Dr for Trew report on the Upload file&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_89" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_PAYA Dr_Row" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_101" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["NEFT FROM:UNIFIED PAYMENTS/VAS TERWVAT PAYMENT"+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumVat]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["PAYATTITUDE DR "+ in_ReportDate.ToString("dd.MM.yyyy")]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerPayADrTransSum]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("ACCT PAYA MC").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <Assign DisplayName="Assign IssuerFeeVisaDrTransSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_34">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Decimal">[IssuerFeeTransSum]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerFeeTransSum +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("ISSUER FEE (IRF) VALUE").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+            <Sequence DisplayName="MasterCard" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_56">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Decimal" Name="IssuerMasterDrFeeTransSum" />
+                <Variable x:TypeArguments="x:Decimal" Name="IssuerIncomeMasterDr" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Master Card Visa Dr Sheet" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_102" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+                  <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerMasterDrFeeTransSum]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer MasterCard Dr</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ColName">FEE</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <Assign DisplayName="Assign IssuerFeeVisaDrTransSum" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="Assign_35">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Decimal">[IssuerFeeTransSum]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerFeeTransSum +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("ISSUER FEE (IRF) VALUE").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeCode ContinueOnError="{x:Null}" Code="&#xA;decimal test;&#xA; foreach (DataRow row in in_DT.Rows)&#xA;{&#xA;&#x9;if (decimal.TryParse(row[&quot;TRANAMOUNT&quot;].ToString(), out test) == true &amp;&amp; decimal.TryParse(row[&quot;FEE&quot;].ToString(), out test) == true  )&#xA;&#x9;{&#xA;&#x9;&#x9;row[&quot;Column1&quot;] =Convert.ToDecimal(row[&quot;TRANAMOUNT&quot;].ToString())  - Convert.ToDecimal(row[&quot;FEE&quot;].ToString());&#xA;&#x9;}&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+                <ui:InvokeCode.Arguments>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[DT]</InOutArgument>
+                </ui:InvokeCode.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeCode>
+              <Assign DisplayName="Assign IssuerMasterDrFeeTransSum" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="Assign_36">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Decimal">[IssuerIncomeMasterDr]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("Column1").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MC Dr Income_Row" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_103" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" (792000/2)POS DOM MC"]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerIncomeMasterDr]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("ACCT MC INCOME").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MC Dr Fee_Row" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_104" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" (792000/2)POS DOM MC"]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerMasterDrFeeTransSum]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("ACC MC FEE").ToString]</InArgument>
                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
@@ -940,27 +661,23 @@ Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
             </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_47">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TODO:::::::Update_Issuer Fee Visa Dr_Row" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_105" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["VS"+in_ReportDate.ToString("dd.MM.yyyy")+" POS ISSUER FEE"]</InArgument>
+                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerFeeTransSum]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT ISSUER FEE VISA").ToString]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
-            </Sequence>
-          </If.Else>
-        </If>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </Sequence>
       </Sequence>
       <Sequence DisplayName="Sequence: Acquire Maunal" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
         <Sequence.Variables>
@@ -1318,7 +1035,7 @@ Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
 		          Sum(Function(x) Convert.ToDecimal(x("TRANAMOUNT").ToString))]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QueryDB workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_120" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QueryDB workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_120" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBAcqVisaAmountSettled]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
@@ -1769,9 +1486,193 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
           </Sequence>
         </Sequence>
       </Sequence>
-      <Sequence DisplayName="Sequence: Issuer" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_59">
+      <Sequence DisplayName="Sequence: MDB Report" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_19">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Decimal" Name="DBTrewTotalSumFee" />
+          <Variable x:TypeArguments="x:Decimal" Name="DBTrewTotalSumVat" />
+          <Variable x:TypeArguments="x:Decimal" Name="MdbVatSum" />
+          <Variable x:TypeArguments="x:Decimal" Name="DB" />
+          <Variable x:TypeArguments="x:Decimal" Name="DBMbdPayment" />
+          <Variable x:TypeArguments="x:Decimal" Name="DBMbdVatPayment" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message: MDB Report" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Bot is about to update MDB Payment Report&quot;]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:LogMessage>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Subsidy Col" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[MdbSubsidySum]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">MDB Sheet</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_ColName">TOTAL SUBSIDY AMOUNT</InArgument>
+            <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <Assign DisplayName="Assign MdbVatSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Decimal">[MdbVatSum]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("TOTAL VAT CHARGE").ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x("TOTAL VAT CHARGE").ToString)))]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB MDBS PAYMENT" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBMbdPayment]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB VAT PAYMENT" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">
+              <mva:VisualBasicReference x:TypeArguments="x:Decimal" ExpressionText="DBMbdVatPayment" />
+            </OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <If Condition="True" DisplayName="If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Sequence: Update Row" sap:VirtualizedContainerService.HintSize="376,821" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Update Mdb Payement " sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Update MDB Payment on the Upload file&quot;]" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMerchantDetails For Mdb Acct" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_53" UnSafe="False" WorkflowFileName="POS_CPD\GetMerchantDetails.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MerchantDetailsDT">[MerchantDetailsDT]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_MerchantDataRow">[MerchantDataRow]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RowFilter">MDB ACT NUMBER</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Credit_MDB" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd-mm-yy")+" MDBS paymt TRXN NIBSS"]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbSubsidySum]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Debit_MDB" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_54" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd-mm-yy")+" VISA /NMC PETROL FEE"]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbSubsidySum]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Credit_MDB VAT" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_55" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["MDBVAT PAYMENT "+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbVatSum]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Debit_MDB VAT" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_56" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["MDBVAT PAYMENT "+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[MdbVatSum]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+            </Sequence>
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Sequence: Treat Trew Report" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence.Variables>
           <Variable x:TypeArguments="x:Decimal" Name="DBTrewTotalSumVat" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
@@ -1780,7 +1681,7 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message: Issuer Report" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Bot is about to update Issuer Report&quot;]">
+        <ui:LogMessage DisplayName="Log Message: Fee Log" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Bot is getting the summaration for Fee and Vat&quot;]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1788,12 +1689,10 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:LogMessage>
-        <Sequence DisplayName="Update all Sheet for issuer" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_58">
+        <Sequence DisplayName="Fee and Vat Sumation For all Sheet" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="FeeCol" />
-            <Variable x:TypeArguments="x:Decimal" Name="IssuerSummarySum" />
-            <Variable x:TypeArguments="x:Decimal" Name="IssuerTotalProcessingFeeSum" />
-            <Variable x:TypeArguments="x:Decimal" Name="IssuerProcessingVatSum" />
+            <Variable x:TypeArguments="x:String" Name="VatCol" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1801,11 +1700,30 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMerchantDetails Issuer" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_93" UnSafe="False" WorkflowFileName="POS_CPD\GetMerchantDetails.xaml">
+          <Assign DisplayName="Assign FeeCol" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[FeeCol]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">TERMINALOWNERFEE</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign VatCol" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[VatCol]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">TERMINALOWNERVAT</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Visa DR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MerchantDetailsDT">[MerchantDetailsDT]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_MerchantDataRow">[MerchantDataRow]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_RowFilter" xml:space="preserve">ISSUER ACT NUMBER </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw Visa Dr Sheet</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1814,239 +1732,258 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <Sequence DisplayName="Summary Sheet" sap:VirtualizedContainerService.HintSize="242,66" sap2010:WorkflowViewState.IdRef="Sequence_53">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:Decimal" Name="IssuerTotalssuerVatSum" />
-            </Sequence.Variables>
+          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Visa CR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw Visa Cr Sheet</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Issuer Summary Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_94" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-                <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerSummarySum]</OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer Summary</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_ColName">ISSUER NET POSITION</InArgument>
-                <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-            <Assign DisplayName="Assign IssuerProcessingVatSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_30">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Decimal">[IssuerProcessingVatSum]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("PROCESSING VAT").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("PROCESSING VAT").ToString)))]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign DisplayName="Assign IssuerTotalProcessingFeeSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_31">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Decimal">[IssuerTotalProcessingFeeSum]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerProcessingVatSum +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("PROCESSING FEE").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("PROCESSING FEE").ToString)))]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign DisplayName="Assign IssuerTotalssuerVatSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_32">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Decimal">[IssuerTotalssuerVatSum]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerProcessingVatSum +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("ISSUER VAT").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("ISSUER VAT").ToString)))]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Summary_Row workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_95" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["ISSO PAYMENT "+in_ReportDate.ToString("dd.MM.yyyy")]</InArgument>
-                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerSummarySum]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Processing_Row workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_96" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" VISA POS PRO FEE"]</InArgument>
-                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerTotalProcessingFeeSum]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Issuer Vat_Row workflow" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_97" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" VISA POS ISSUER FEE VAT"]</InArgument>
-                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerTotalssuerVatSum]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT ISSUER VAT").ToString]</InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-          </Sequence>
-          <Sequence DisplayName="All Issuer DR Sheet" sap:VirtualizedContainerService.HintSize="242,461" sap2010:WorkflowViewState.IdRef="Sequence_57">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:Decimal" Name="IssuerVisaDrTransSum" />
-              <Variable x:TypeArguments="x:Decimal" Name="IssuerFeeTransSum" />
-            </Sequence.Variables>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_25">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Mastercard CR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw MasterCard Cr Sheet</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="VISA" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_54">
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_26">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Mastercard DR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw MasterCard Dr Sheet</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_27">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum PayAttitude CR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw PayA Cr Sheet</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_28">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum PayAttitude DR Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[TrewTotalSumFee]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Terw PayA Dr Sheet</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColName">[FeeCol]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[TrewTotalSumFee]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign TrewTotalSumVat" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_29">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[TrewTotalSumVat]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[TrewTotalSumVat +DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x(VatCol).ToString, Test) = True).
+Sum(Function(x) Convert.ToDecimal((x(VatCol).ToString)))]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumFee" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBTrewTotalSumFee]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumVat" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBTrewTotalSumVat]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMerchantDetails For Mdb Acct" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_90" UnSafe="False" WorkflowFileName="POS_CPD\GetMerchantDetails.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MerchantDetailsDT">[MerchantDetailsDT]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_MerchantDataRow">[MerchantDataRow]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RowFilter">TREW ACCT NUMBER</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <If Condition="True" DisplayName="FEE Cr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Sequence: Update Credit Row" sap:VirtualizedContainerService.HintSize="376,274" sap2010:WorkflowViewState.IdRef="Sequence_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Issuer Visa Dr Sheet" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_98" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
+              <ui:LogMessage DisplayName="Log Message: Update Fee Cr for Trew" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Update Fee Cr on the Upload file&quot;]" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-                  <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerVisaDrTransSum]</OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer Visa Dr</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ColName">TRANAMOUNT</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
-                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_Visa Dr_Row" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_99" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" (792000/2)POS DOM"]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerVisaDrTransSum]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yy")+ " MC/VISA POS TERM OWNR INCM"]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumVat]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT VISA").ToString]</InArgument>
                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-              <Assign DisplayName="Assign IssuerFeeVisaDrTransSum" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="Assign_33">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:Decimal">[IssuerFeeTransSum]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("ISSUER FEE (IRF) VALUE").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InArgument>
-                </Assign.Value>
-              </Assign>
             </Sequence>
-            <Sequence DisplayName="PAY ATTITIDE" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_55">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="x:Decimal" Name="IssuerPayADrTransSum" />
-              </Sequence.Variables>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Issuer Pay Attitiude Dr Sheet" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_100" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-                  <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerPayADrTransSum]</OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer PayAttitude Dr</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ColName">TRANAMOUNT</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
-                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
+              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_PAYA Dr_Row" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_101" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              </ui:LogMessage>
+              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            </Sequence>
+          </If.Else>
+        </If>
+        <If Condition="True" DisplayName="FEE Dr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Sequence: Update Fee Debit Row" sap:VirtualizedContainerService.HintSize="376,335" sap2010:WorkflowViewState.IdRef="Sequence_49">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Update Fee for Trew" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Update Fee Dr on the Upload file&quot;]" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_91" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["PAYATTITUDE DR "+ in_ReportDate.ToString("dd.MM.yyyy")]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerPayADrTransSum]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["NEFT FROM:UNIFIED PAYMENTS/VAS TERWVAT PAYMENT"+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumFee]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("ACCT PAYA MC").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <Assign DisplayName="Assign IssuerFeeVisaDrTransSum" sap:VirtualizedContainerService.HintSize="262,64" sap2010:WorkflowViewState.IdRef="Assign_34">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:Decimal">[IssuerFeeTransSum]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerFeeTransSum +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("ISSUER FEE (IRF) VALUE").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InArgument>
-                </Assign.Value>
-              </Assign>
-            </Sequence>
-            <Sequence DisplayName="MasterCard" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_56">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="x:Decimal" Name="IssuerMasterDrFeeTransSum" />
-                <Variable x:TypeArguments="x:Decimal" Name="IssuerIncomeMasterDr" />
-              </Sequence.Variables>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName=" Sum Master Card Visa Dr Sheet" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_102" UnSafe="False" WorkflowFileName="POS_CPD\SumColumn.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessingFilePath">[ProcessingFilePath]</InArgument>
-                  <OutArgument x:TypeArguments="x:Decimal" x:Key="out_TotalSum">[IssuerMasterDrFeeTransSum]</OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Issuer MasterCard Dr</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ColName">FEE</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="in_Sum">[0]</InArgument>
-                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DT">[DT]</OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2055,58 +1992,57 @@ Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InA
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-              <Assign DisplayName="Assign IssuerFeeVisaDrTransSum" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="Assign_35">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:Decimal">[IssuerFeeTransSum]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[IssuerFeeTransSum +DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("ISSUER FEE (IRF) VALUE").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("ISSUER FEE (IRF) VALUE").ToString)))]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:InvokeCode ContinueOnError="{x:Null}" Code="&#xA;decimal test;&#xA; foreach (DataRow row in in_DT.Rows)&#xA;{&#xA;&#x9;if (decimal.TryParse(row[&quot;TRANAMOUNT&quot;].ToString(), out test) == true &amp;&amp; decimal.TryParse(row[&quot;FEE&quot;].ToString(), out test) == true  )&#xA;&#x9;{&#xA;&#x9;&#x9;row[&quot;Column1&quot;] =Convert.ToDecimal(row[&quot;TRANAMOUNT&quot;].ToString())  - Convert.ToDecimal(row[&quot;FEE&quot;].ToString());&#xA;&#x9;}&#xA;}&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
-                <ui:InvokeCode.Arguments>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[DT]</InOutArgument>
-                </ui:InvokeCode.Arguments>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="242,205" sap2010:WorkflowViewState.IdRef="Sequence_50">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeCode>
-              <Assign DisplayName="Assign IssuerMasterDrFeeTransSum" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="Assign_36">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:Decimal">[IssuerIncomeMasterDr]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[DT.AsEnumerable.
-Where(Function(x) Double.TryParse(x("Column1").ToString, Test) = True).
-Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MC Dr Income_Row" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_103" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" (792000/2)POS DOM MC"]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerIncomeMasterDr]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("ACCT MC INCOME").ToString]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
+              </ui:LogMessage>
+              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
+            </Sequence>
+          </If.Else>
+        </If>
+        <If Condition="True" DisplayName="VAT Cr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Sequence: Update Credit Row" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_51">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Update Vat for Trew" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Update Vat Cr on the Upload file&quot;]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MC Dr Fee_Row" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_104" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+              </ui:LogMessage>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_92" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">[in_ReportDate.ToString("dd.MM.yyyy")+" (792000/2)POS DOM MC"]</InArgument>
-                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerMasterDrFeeTransSum]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("ACC MC FEE").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["NEFT FROM:UNIFIED PAYMENTS/VAS TERWVAT PAYMENT"+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumVat]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT CREDIT").ToString]</InArgument>
                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
@@ -2117,23 +2053,87 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
             </Sequence>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TODO:::::::Update_Issuer Fee Visa Dr_Row" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_105" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["VS"+in_ReportDate.ToString("dd.MM.yyyy")+" POS ISSUER FEE"]</InArgument>
-                <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[IssuerFeeTransSum]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_TransType">C</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT ISSUER FEE VISA").ToString]</InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_52">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-          </Sequence>
-        </Sequence>
+              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_9" />
+            </Sequence>
+          </If.Else>
+        </If>
+        <If Condition="True" DisplayName="VAT Dr If Finacle amount is lower" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Sequence: Update Debit Row" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_46">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Update Vat for Trew" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Update Vat Dr for Trew report on the Upload file&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_UploadFile_Row workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_89" UnSafe="False" WorkflowFileName="POS_CPD\Update_UploadFile_Row.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Narration">["NEFT FROM:UNIFIED PAYMENTS/VAS TERWVAT PAYMENT"+in_ReportDate.ToString("ddMMMMyy")]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal" x:Key="In_Amount">[TrewTotalSumVat]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TransType">D</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[MerchantDataRow("MERCHANT ACCOUNT DEBIT").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_UploadDT">[UploadDT]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Sequence: Throw Error" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_47">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Warn " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Warn" Message="[&quot;The Amonut gotten from the DB is lower than the amount gotten from the report&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <Throw DisplayName="Throw BRE" Exception="[new BusinessRuleException(&quot;The Amount gotten from Finacle (&quot;+DBTrewTotalSumFee.ToString + &quot;) is lower than the Amount gotten from the Report (&quot;+TrewTotalSumFee.ToString+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
+            </Sequence>
+          </If.Else>
+        </If>
       </Sequence>
       <Sequence DisplayName="Sequence: ACQ Payment Report" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_26">
         <Sequence.Variables>
@@ -2381,7 +2381,7 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
         </Sequence>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumFee" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_49" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumFee" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_49" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBTrewTotalSumFee]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
@@ -2392,7 +2392,7 @@ Sum(Function(x) Convert.ToDecimal((x("Column1").ToString)))]</InArgument>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumVat" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_50" UnSafe="False" WorkflowFileName="POS_CPD\QueryDB.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="QueryDB DBTrewTotalSumVat" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_50" UnSafe="False" WorkflowFileName="Finacle\QueryDB.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <OutArgument x:TypeArguments="x:Decimal" x:Key="out_Amount">[DBTrewTotalSumVat]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>

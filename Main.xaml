@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="752,1644" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="740,1644" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
@@ -180,14 +180,10 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
-      <ui:InvokeCode ContinueOnError="{x:Null}" Code="string Day = DateTime.Now.AddDays(Convert.ToInt32(in_AddDay)).DayOfWeek.ToString().ToUpper();&#xD;&#xA;Console.WriteLine(&quot;Today is: &quot;+Day);&#xD;&#xA;if(Day == &quot;MONDAY&quot;){&#xD;&#xA;&#x9;Console.WriteLine(&quot;Today is Monday, Bot will run Three days settlement&quot;);&#xD;&#xA;&#x9;io_List.Add(&quot;Saturday&quot;);&#xD;&#xA;&#x9;io_List.Add(&quot;Sunday&quot;);&#xD;&#xA;&#x9;io_List.Add(&quot;Monday&quot;);&#x9;&#xD;&#xA;}&#xD;&#xA;else{&#xD;&#xA;Console.WriteLine(&quot;Bot will only treat:&quot;+Day);&#xD;&#xA;io_List.Add(Day);&#xD;&#xA;}" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="string Day = DateTime.Now.AddDays(Convert.ToInt32(in_AddDay)).DayOfWeek.ToString().ToUpper();&#xA;Console.WriteLine(&quot;Today is: &quot;+Day);&#xA;if(Day == &quot;MONDAY&quot;){&#xA;&#x9;Console.WriteLine(&quot;Today is Monday, Bot will run Three days settlement&quot;);&#xA;&#x9;io_List.Add(&quot;Saturday&quot;);&#xA;&#x9;io_List.Add(&quot;Sunday&quot;);&#xA;&#x9;io_List.Add(&quot;Monday&quot;);&#x9;&#xA;}&#xA;else{&#xA;Console.WriteLine(&quot;Bot will only treat:&quot;+Day);&#xA;io_List.Add(Day);&#xA;}" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
         <ui:InvokeCode.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_AddDay">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VisaAddDay" />
-          </InArgument>
-          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="io_List">
-            <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="DayList" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_AddDay">[VisaAddDay]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="io_List">[DayList]</InArgument>
         </ui:InvokeCode.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -398,17 +394,11 @@
                           <av:PointCollection x:Key="ConnectorLocation">490,296 490,346.04</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DownloadAllReport workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_175" UnSafe="False" WorkflowFileName="Downloads\DownloadAllReport.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DownloadAllReport workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_175" UnSafe="False" WorkflowFileName="Downloads\DownloadAllReport.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Sysfig">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Sysfig" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_ReportDate">
-                            <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="ReportDate" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Sysfig">[Sysfig]</InArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_ReportDate">[ReportDate]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <FlowStep.Next>
@@ -417,7 +407,7 @@
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">390,346.04</av:Point>
                               <av:Size x:Key="ShapeSize">200,66</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">390,379.04 360,379.04 360,380 290,380</av:PointCollection>
+                              <av:PointCollection x:Key="ConnectorLocation">390,379.04 360,379.04 360,380 300,380</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Sequence DisplayName="Sequence: Data Massage" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_43">
@@ -432,7 +422,7 @@
                             <FlowStep x:Name="__ReferenceID1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">90,347</av:Point>
+                                  <av:Point x:Key="ShapeLocation">100,347</av:Point>
                                   <av:Size x:Key="ShapeSize">200,66</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
