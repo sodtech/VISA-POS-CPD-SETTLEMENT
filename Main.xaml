@@ -199,7 +199,7 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="item" />
           </ActivityAction.Argument>
-          <TryCatch DisplayName="Try Run Pos Cpd" sap:VirtualizedContainerService.HintSize="672,1066" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+          <TryCatch DisplayName="Try Run Pos Cpd" sap:VirtualizedContainerService.HintSize="672,1072" sap2010:WorkflowViewState.IdRef="TryCatch_3">
             <TryCatch.Variables>
               <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
             </TryCatch.Variables>
@@ -211,27 +211,30 @@
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
               <Flowchart DisplayName="Workflow Hub" sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+                <Flowchart.Variables>
+                  <Variable x:TypeArguments="x:Boolean" Name="Balanced" />
+                </Flowchart.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    <av:Point x:Key="ShapeLocation">30,12.5</av:Point>
+                    <av:Point x:Key="ShapeLocation">260,2.5</av:Point>
                     <av:Size x:Key="ShapeSize">60,75</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">90,50 170,50</av:PointCollection>
+                    <av:PointCollection x:Key="ConnectorLocation">290,77.5 290,124.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <Flowchart.StartNode>
                   <x:Reference>__ReferenceID4</x:Reference>
                 </Flowchart.StartNode>
-                <FlowStep x:Name="__ReferenceID3">
+                <FlowStep x:Name="__ReferenceID1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">390,127</av:Point>
-                      <av:Size x:Key="ShapeSize">200,66</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">490,193 490,245</av:PointCollection>
+                      <av:Point x:Key="ShapeLocation">190,217</av:Point>
+                      <av:Size x:Key="ShapeSize">200,68</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">290,285 290,324.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Load All Required Settings" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence DisplayName="Load All Required Settings" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_11">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="TrackerExist" />
                       <Variable x:TypeArguments="x:Object" Name="AddDays" />
@@ -242,7 +245,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: Load Local Config" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Bot about to load Local Config&quot;]">
+                    <ui:LogMessage DisplayName="Log Message: Load Local Config" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Bot about to load Local Config&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -250,7 +253,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Load Internal Config Values" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Projects\Initialize_Config_Values.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Load Internal Config Values" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Projects\Initialize_Config_Values.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFilePath">Data\VisaConfig.xlsx</InArgument>
                         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
@@ -262,7 +265,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
-                    <ui:LogMessage DisplayName="Log Message: Load Local Config" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Bot has finished Loading local config&quot;]">
+                    <ui:LogMessage DisplayName="Log Message: Load Local Config" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Bot has finished Loading local config&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -270,7 +273,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <Sequence DisplayName="Sequence: Validate all work folders" sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                    <Sequence DisplayName="Sequence: Validate all work folders" sap:VirtualizedContainerService.HintSize="569,66" sap2010:WorkflowViewState.IdRef="Sequence_16">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -311,7 +314,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
-                    <ui:LogMessage DisplayName="Log Message: Load External Config" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Bot about to load External Config&quot;]">
+                    <ui:LogMessage DisplayName="Log Message: Load External Config" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Bot about to load External Config&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -319,7 +322,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Load External Config" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Projects\Load_External_Config.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Load External Config" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Projects\Load_External_Config.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Sisfig">[Sysfig]</OutArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[Config("SheetName_SystemSettings").ToString]</InArgument>
@@ -332,7 +335,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
-                    <ui:LogMessage DisplayName="Log Message: Load External Config" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Bot has finished Loading External config&quot;]">
+                    <ui:LogMessage DisplayName="Log Message: Load External Config" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Bot has finished Loading External config&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -340,7 +343,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <Assign DisplayName="Assign out_ReportDate" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign DisplayName="Assign out_ReportDate" sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                       <Assign.To>
                         <OutArgument x:TypeArguments="s:DateTime">[ReportDate]</OutArgument>
                       </Assign.To>
@@ -348,11 +351,11 @@
                         <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.AddDays(convert.ToDecimal(Config("VisaAddDays").Tostring))]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <If Condition="[ReportDate.DayOfWeek.ToString().ToUpper = &quot;MONDAY&quot;]" DisplayName="If is Monday" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_13">
+                    <If Condition="[ReportDate.DayOfWeek.ToString().ToUpper = &quot;MONDAY&quot;]" DisplayName="If is Monday" sap:VirtualizedContainerService.HintSize="569,218" sap2010:WorkflowViewState.IdRef="If_13">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
@@ -376,7 +379,15 @@
                         </Assign>
                       </If.Else>
                     </If>
-                    <ui:LogMessage DisplayName="Log Message Report Date" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Bot is treating Transaction of Date: &quot;+ReportDate.ToString(&quot;dd-MMM-yyyy&quot;)]">
+                    <Assign DisplayName="Assign out_ReportDate" sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:DateTime">[ReportDate]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:DateTime">[DateTime.Now.AddDays(-6)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log Message Report Date" sap:VirtualizedContainerService.HintSize="569,51" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Bot is treating Transaction of Date: &quot;+ReportDate.ToString(&quot;dd-MMM-yyyy&quot;)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -389,12 +400,12 @@
                     <FlowStep x:Name="__ReferenceID0">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">390,245</av:Point>
-                          <av:Size x:Key="ShapeSize">200,51</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">490,296 490,346.04</av:PointCollection>
+                          <av:Point x:Key="ShapeLocation">190,324.5</av:Point>
+                          <av:Size x:Key="ShapeSize">200,52</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">290,376.5 290,416.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DownloadAllReport workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_175" UnSafe="False" WorkflowFileName="Downloads\DownloadAllReport.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DownloadAllReport workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_175" UnSafe="False" WorkflowFileName="Downloads\DownloadAllReport.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Sysfig">[Sysfig]</InArgument>
@@ -405,39 +416,45 @@
                         <FlowStep x:Name="__ReferenceID2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">390,346.04</av:Point>
-                              <av:Size x:Key="ShapeSize">200,66</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">390,379.04 360,379.04 360,380 300,380</av:PointCollection>
+                              <av:Point x:Key="ShapeLocation">190,416.5</av:Point>
+                              <av:Size x:Key="ShapeSize">200,52</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">290,468.5 290,508.5</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Sequence: Data Massage" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_43">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Build_UploadFile" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_178" UnSafe="False" WorkflowFileName="POS_CPD\Build_UploadFile.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_SisFig">
+                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Sysfig" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="s:DateTime" x:Key="in_ReportDate">
+                                <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="ReportDate" />
+                              </InArgument>
+                              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Balanced">
+                                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Balanced" />
+                              </OutArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
                           <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID1">
+                            <FlowStep x:Name="__ReferenceID3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">100,347</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,66</av:Size>
+                                  <av:Point x:Key="ShapeLocation">190,508.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,68</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Sequence: Build Upload File" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                              <Sequence DisplayName="Send Job Report" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_45">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Build_UploadFile" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_176" UnSafe="False" WorkflowFileName="POS_CPD\Build_UploadFile.xaml">
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send_Mail workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_179" UnSafe="False" WorkflowFileName="Projects\Send_Mail.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_SisFig">[Sysfig]</InArgument>
-                                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ReportDate">[ReportDate]</InArgument>
+                                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
@@ -449,17 +466,15 @@
                   </FlowStep.Next>
                 </FlowStep>
                 <x:Reference>__ReferenceID0</x:Reference>
-                <x:Reference>__ReferenceID1</x:Reference>
-                <x:Reference>__ReferenceID2</x:Reference>
                 <FlowStep x:Name="__ReferenceID4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">170,24.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,51</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">370,50 490,50 490,127</av:PointCollection>
+                      <av:Point x:Key="ShapeLocation">190,124.5</av:Point>
+                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">290,176.5 290,217</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;BOT IS ABOUT TO TREAT :&quot;+item]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;BOT IS ABOUT TO TREAT :&quot;+item]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -468,13 +483,15 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
                   <FlowStep.Next>
-                    <x:Reference>__ReferenceID3</x:Reference>
+                    <x:Reference>__ReferenceID1</x:Reference>
                   </FlowStep.Next>
                 </FlowStep>
+                <x:Reference>__ReferenceID2</x:Reference>
+                <x:Reference>__ReferenceID3</x:Reference>
               </Flowchart>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="638,120" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="638,122" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -485,7 +502,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Flowchart DisplayName="Gobal Exception Protocol" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                  <Flowchart DisplayName="Gobal Exception Protocol" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Flowchart_2">
                     <Flowchart.Variables>
                       <Variable x:TypeArguments="x:String" Name="ErrorCode" />
                     </Flowchart.Variables>
@@ -511,7 +528,7 @@
                               <av:Size x:Key="ShapeSize">200,66</av:Size>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Default Mail Notification" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <Sequence DisplayName="Default Mail Notification" sap:VirtualizedContainerService.HintSize="476,171" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:String" Name="XMailMessage" />
                             </Sequence.Variables>
@@ -521,7 +538,7 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:ReadTextFile File="{x:Null}" Content="[XMailMessage]" DisplayName="Read Mail Template 00" FileName="Data\EmailTemplates\00_Default_Exception_Message.txt" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+                            <ui:ReadTextFile File="{x:Null}" Content="[XMailMessage]" DisplayName="Read Mail Template 00" FileName="Data\EmailTemplates\00_Default_Exception_Message.txt" sap:VirtualizedContainerService.HintSize="434,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
                           </Sequence>
                         </FlowStep>
                       </FlowSwitch.Default>
