@@ -1,0 +1,374 @@
+
+
+
+select * from tbaadm.htd
+
+where acid in (select acid from tbaadm.gam
+
+where foracid = '2018367306' and value_date = '05-DEC-21')
+
+select * from tbaadm.htd
+
+where acid in (select acid from tbaadm.gam
+
+
+"https://outlook.office365.com"
+
+
+"Ce$t@518tabl"
+"rparobot@firstbanknigeria.com"
+
+
+where foracid = '48910111002801' and value_date = '19-MAY-22' and  Tran_Amt = '317186.08')
+
+https://gallery.uipath.com/api/v3/index.json
+https://www.myget.org/f/workflow/api/v3/index.json
+
+
+wilson.o@lonzec.com;sn030763@firstbanknigeria.com;ekpo.joseph@stalwartdeliverables.com
+
+Sequence: Verify Account Details
+
+oluwatomi.s.soewu@firstbanknigeria.com;Tiwalade.Aladenika@firstbanknigeria.com
+
+
+
+22TP10688
+
+To Reslove Line item With no infomation in sisfig
+
+"select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '"+AccountNumber+"' and value_date = '"+in_QueryDate+"' and  Tran_Amt = '"+in_VisaTotalLcyAmount+"')"
+
+
+RPADBCredentials      
+RPADB_Server
+
+new System.Net.NetworkCredential(string.Empty, RPADBPasswordSecured).Password
+
+"Data Source="+RPADB_Server+";Initial Catalog=UIPATH;Persist Security Info=True;User ID="+RPADBUsername+";Password="+RPADBPasswordStr+""
+"System.Data.SqlClient"
+
+C:\Users\rparobot5\Downloads\Agency_WorkLog.xlsx
+C:\Users\rparobot5\Downloads\Agency_WorkLog.xlsx
+
+
+VISA CARD 
+MASTER CARD
+
+FBN_VTU_Settlement_Breakdown_Report(Terminals_011_701)_20221509
+FBN_VTU_Settlement_Breakdown_Report(Terminals_011_701)_2022_09_15.csv"
+FBN_VTU_Settlement_Breakdown_Report(Terminals_011_701)_2022_9_15.csv"
+
+
+(From n In CurrentDT.AsEnumerable
+Let row = CurrentDT2.AsEnumerable.
+Where(Function(x) x(BillerNamecol).ToString = n(BillerNamecol).ToString).FirstOrDefault
+Select n)
+
+
+
+Backup verification codes
+sodiq.bakare@dipolediamond.com
+
+ 1. vjtg 26pr 1lx2
+ 2. u2ci z38v nrsg
+ 3. lhgg 1yqw kvkl
+ 4. 0ix9 sgu3 vr6w
+ 5. xg6c 68to 6v2t
+
+
+
+
+Asset To create:
+GetVisaTotalLcyBalQuery
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '"+AccountNumber+"' and value_date = '"+in_ReportDate+"' and  Tran_particular = '"+Narration+"')
+
+GetPayATotalLcyBalQuery
+"select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '"+AccountNumber+"' and value_date = '"+in_ReportDate+"' and  Tran_particular = '"+Narration+"')"
+
+NEFT FROM:UNIFIED PAYMENTS/FBNPAGENTPAYT
+NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT
+
+
+
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '2023293085' and value_date = '3-oct-2022'
+
+
+
+
+
+
+
+NEFT FROM:UNIFIED PAYMENTS/FBNPAGENTPAYT
+NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT
+
+29-SEP   1400536444.75
+29-SEP   60146.25
+
+30-SEP    1592033917
+NIL 
+
+1 OCT   826520582.25
+NIL
+
+
+
+
+
+
+
+
+
+DT.AsEnumerable()
+.GroupBy(x=>x.Field<string>(ColNameRetailerName))
+.Select(g=>g.First()).CopyToDataTable()
+
+DT.AsEnumerable.
+Where(function(x) Double.TryParse(x.Field("MDB VAT") = true )).
+Sum(function(x) Convert.ToDecimal(x("MDB VAT"))
+
+DT.AsEnumerable.
+Where(function(x) Double.TryParse(x.Field("MDB VAT").ToString = true, 0.0 )).Sum(function(y) Convert.ToDecimal(y.Field("MDB VAT").ToString))
+
+DT.AsEnumerable.
+Where(Function(x) Double.TryParse(x("MDB VAT").ToString , 0.0 )= True).
+Sum(Function(y) Convert.ToDecimal((y("MDB VAT").ToString)))
+
+DT.AsEnumerable.Where(Function(x) Double.TryParse(x(MDB VAT).ToString, 0.0) = True).Sum(Function(x) Convert.ToDecimal((x(MDB VAT).ToString)))
+
+POS CPD PROCESS
+
+File Required for the process;
+1. *Issuer daily
+2. *Download Acquirer report daily
+3. *Download Terminal Owner report daily
+4. *MDB Report Daily
+
+    File nOt required
+5.Acquirer manual not daily
+6.ACQ payment report Not Daily
+7.Sokoto PayArena Not Daily
+
+AddDayAsset
+
+I will drop the names soon.
+• MIGS Settlement
+• Agency Banking
+• POS Acquiring Dollar
+• Pay Arena
+• MDB Chargeback
+
+
+P@55w0rd$x
+
+Email: sodiq.bakare@dipolediamond.com
+Password: Student72
+
+11 GTBABC 226624227 19 011150000 20 94,164,377.48 2023293085 UNIFIED PAYMENTS FIRST BANK OF NIGERI VAS ISSO
+
+
+out_reportDate
+DateTime.Now.AddDays(Convert.ToDouble(VisaAddDays.ToString())-1).ToString("dd-MM-yyyy")
+
+
+out_PayDate
+DateTime.Now.AddDays(Convert.ToDouble(VisaAddDays.ToString())-1).ToString("dd-MMM-yy")
+
+out_VisaDate
+DateTime.Now.AddDays(Convert.ToDouble(VisaAddDays.ToString())-2).ToString("dd-MMM-yy")
+
+
+
+ FIRST BANK OF NIGERIA PLC_MDB_AGENCY_22-09-2022.xlsx"
+ FIRST BANK OF NIGERIA PLC_MDB_AGENCY_21-09-2022
+ 
+ 
+ 
+DateTime.Now.AddDays(Convert.ToDouble(in_VisaAddDays.ToString())).ToString("dd-MM-yyyy")
+
+
+"Data\OtherTemplates\MDB_WorkLog.xlsx"
+
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '"+AccountNumber+"' and value_date = '"+in_QueryDate+"' and  Tran_Amt = '"+in_TotalLcyAmount+"')
+
+
+Visa_Agency_AddDays
+VISA_MDB_AddDays
+Visa_POS_AddDays
+Visa_Migs_AddDays
+
+
+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
+https://github.com/sodtech/MDB-CHARGE-BACK-DEPATCHER
+https://github.com/sodtech/MDB-CHARGE-BACK-PERFORMER
+
+
+"tmp,crdownload"
+
+Olasunmiboyedeborah@gmail.com
+Oladeb12oladeb
+
+FTPCredential
+OutLookCredential
+
+
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid =
+'"+AccountNumber+"' and value_date between '"+in_ReportDate.ToString("dd-MMM-yyyy")+"' and
+'"+in_ReportDate.AddDays(7).ToString("dd-MMM-yyyy")+"' and Tran_particular LIKE
+'AGENCY PAYMENT"+in_ReportDate.ToString("%dd%MMM%yyyy").ToUpper()+"')
+`
+
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '"+AccountNumber+"' and value_date between '"+in_ReportDate.ToString("dd-MMM-yyyy")+"' and '"+in_ReportDate.AddDays(5).ToString("dd-MMM-yyyy")+" and  Tran_particular = 'AGENCY PAYMENT "+in_ReportDate.ToString("%dd%MMM%yyyy").ToUpper()+"')
+
+
+@"select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid ='"+AccountNumber+"' and value_date between '"+in_ReportDate.ToString("dd-MMM-yyyy")+"' and '"+in_ReportDate.AddDays(7).ToString("dd-MMM-yyyy")+"' and Tran_particular LIKE  'AGENCY PAYMENT%'  and Tran_particular LIKE  '%"+DAY+"%'   and Tran_particular LIKE  '%"+MONTH+"%' and Tran_particular LIKE  '%"+YEAR+"')"
+
+
+
+
+Error	ERROR	Validation Error	No compiled code to run
+error CS0030: Cannot convert type 'LinqToExcel.Row' to 'System.Data.DataRow' At line 4	Main.xaml
+
+
+
+ { "", "1000188541 FBN", "ACQUIRER TRANSACTIONS", "", "", "566", "ATM CASH", "Detail Total", "", "1000339563 FIRST BANK NIGE", "1000339563 FIRST BANK NIGE", "840", "566", "", "", "ORIGINAL  ", "25", "", "259,000.00", "", "", "", "CR", "589.67", "CR", "", "0.00", "  ", "" }, RowError="", RowState=Added, Table=[DataTable] }
+ 
+ 
+ select * from tbaadm.dtd where acid in (select acid from tbaadm.gam where foracid ='2023293085' and value_date between '13-Oct-2022' and'20-Oct-2022' and Tran_particular LIKE 'NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT%13%')
+ 
+ select * from tbaadm.dtd where acid in (select acid from tbaadm.gam where foracid =
+'2023293085' and value_date between '6-OCT-2022' and
+'14-OCT-2022' and Tran_particular LIKE 'NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT%13O')
+
+
+LIKE 'NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT%13%'
+LIKE 'NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT%13O
+
+[12:11 PM] Abdulazeez  Abdullahi
+DARLY TRAS QUERY: 
+select * from tbaadm.dtd where acid in (select acid from tbaadm.gam where foracid ='2023293085' and
+value_date = '14-Oct-2022')
+
+
+Histy Trans QUERY 1
+
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid ='2023293085' and
+value_date between '13-OCT-2022' and
+'15-OCT-2022' and Tran_particular LIKE 'NEFT FROM:UNIFIED PAYMENTS/FBNPAGENT PAYMENT%13%')
+
+Hisy Trans qery2
+ select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid ='2023293085' and
+value_date between '3-OCT-2022' and
+'15-OCT-2022' and Tran_particular LIKE 'NEFT FROM:FBN AGENCY POS CASH/FBNP_AGENT PAYMENT%0%')
+
+
+Sodtech@me
+
+FBN4@2022_VSS
+FBN5@2022_VSS
+
+
+2023293085
+2023293085
+
+13 GTBABC 225588591 19 011150000 20 55,342,640.59 2023293085 UNIFIED PAYMENTS FIRST BANK OF NIGERI VAS ISSO
+
+XeroBR_ExternalConfigPathFile
+
+
+IPG Reversal
+IPG Settlement
+
+FBN-IPG_institution_global_report_2022_10_18.csv 
+
+
+
+select * from tbaadm.dtd where acid in (select acid from tbaadm.gam where foracid = '2023293085' and value_date between '6-OCT-2022' and '14-OCT-2022'
+
+
+Bill Payment 
+
+FEE
+Vat
+Vat on VAt
+
+
+select * from tbaadm.htd where acid in (select acid from tbaadm.gam where foracid = '3087905390' and
+tran_particular like 'REV%' and tran_amt = '15000')
+
+
+
+    VISA_POS_DownloadFolderPath
+    VISA_MDB_DownloadFolderPath
+	VISA_Agency_DownloadFolderPath
+    VISA_MIGS_DownloadFolderPath
+	
+"PAYATTITUDE  DR/CR Tran Amt"
+
+Navigate to Finacle and
+• Use the customer’s account number and transaction date to search in the customer’s account for the amount breakdown (actual amount, fee and VAT) on Finacle
+ii. Insert 4 new columns after TRANAMOUNT for ACTUAL AMOUNT SETTLED, FEE, VAT and Extra VAT (7.50)
+ACTUAL AMOUNT SETTLED
+NEW FEE
+VAT
+EXTRA VAT
+
+payattDR901105IssuerFee
+
+Dear Team, 
+
+Please be informed that, I encountered the following error:
+
+Please i cant find the details of LA COUR LIMITED in the configuration settings, Please update. 
+
+Kindly Please retry or forward this to VISA Bot Support Desk for more information. Thank you.
+
+Regards,
+
+
+in_Config["Office365ApplicationID"].ToString()
+in_Config["Office365ApplicationSecret"].ToString()
+in_Config["Office365TenantID"].ToString()
+
+
+Office365ApplicationID
+Office365ApplicationSecret
+Office365TenantID
+
+
+
+HOST: 172.16.249.246
+port: 1521
+Servies: TESTFBN
+User:  rparobot
+pass: S3cur1ty
+
+
+PayDR Tran Amt for 901102
+PayDR Issuer Vat for 901105 and 901102
+PayDR Issuer Fee for 901105 and 901102
+PayDr Origina Amt for 901105
+Paydr New Fee for 901105
+
+
+
+Required
+issuer report (ISSUER_VAS) 
+acquirer manual
+acquirer report
+TERW report
+MDBS report
+ 
+ 
+Not Required
+ACQ PAYMENT
+ISSUER CREDIT
+DEBIT SCHEDULE
+SOKOTO PAY ARENA
+
+
+
+FIRST BANK OF NIGERIA PLC_ACQUIRER_07-11-2022.xlsx
+FIRST BANK OF NIGERIA PLC_ACQUIRER*07*12*2022.*
+
+
